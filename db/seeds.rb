@@ -8,15 +8,54 @@
 
 Garden.destroy_all
 
-puts 'Starting seed!'
-Garden.create!(
+# puts 'Starting seed!'
+# Garden.create!(
+#   name: "My Little Garden",
+#   banner_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/garden_1.jpg"
+# )
+
+# Garden.create!(
+#   name: "My Other Garden",
+#   banner_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/garden_2.jpg"
+# )
+
+# puts 'Finished!'
+
+Garden.destroy_all
+
+little = Garden.create!(
   name: "My Little Garden",
   banner_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/garden_1.jpg"
 )
 
-Garden.create!(
+other = Garden.create!(
   name: "My Other Garden",
   banner_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/garden_2.jpg"
 )
 
-puts 'Finished!'
+Plant.create!(
+  name: "Monstera",
+  image_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/plants/monstera.jpg",
+  garden: little
+)
+
+Plant.create!(
+  name: "Philo",
+  image_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/plants/philo.jpg",
+  garden: little
+)
+
+Plant.create!(
+  name: "Dieff",
+  image_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/rails/parks-and-plants/plants/dieffenbachia.jpg",
+  garden: other
+)
+
+
+Tag.destroy_all
+
+names = %w(Fruit\ tree Cactus Greasy\ plant Flower Ferns Conifers)
+
+names.each do |name|
+  Tag.create!(name: name)
+end
